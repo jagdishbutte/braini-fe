@@ -1,4 +1,3 @@
-import "./App.css";
 import { Button } from "./components/ui/Button";
 import { PlusIcon } from "./icons/PlusIcon";
 import { ShareIcon } from "./icons/ShareIcon";
@@ -9,15 +8,13 @@ function App() {
       <Button
         variant={"primary"}
         startIcon={<PlusIcon size={"md"} />}
-        endIcon={<ShareIcon size={"md"} />}
         size="md"
         title={"Share"}
       ></Button>
 
       <Button
         variant={"secondary"}
-        startIcon={<PlusIcon size={"lg"} />}
-        endIcon={<ShareIcon size={"lg"} />}
+        startIcon={<ShareIcon size={"lg"} />}
         size="lg"
         title={"Share"}
       ></Button>
@@ -25,7 +22,6 @@ function App() {
       <Button
         variant={"primary"}
         startIcon={<PlusIcon size={"sm"} />}
-        endIcon={<ShareIcon size={"sm"} />}
         size="sm"
         title={"Share"}
       ></Button>
