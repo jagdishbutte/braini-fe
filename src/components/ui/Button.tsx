@@ -2,15 +2,16 @@
 import { ReactElement } from "react";
 
 interface ButtonInterface {
-    title: string;
+    title?: string;
     size: "lg" | "sm" | "md";
     startIcon?: ReactElement;
     endIcon?: ReactElement;
     variant: "primary" | "secondary";
+    onClick?: ()=> void;
 }
 
 const sizeStyles = {
-    "lg": "px-8 py-4 text-xl rounded-xl",
+    "lg": "px-6 py-3 text-xl rounded-xl",
     "md": "px-4 py-2 text-md rounded-lg",
     "sm": "px-2 py-1 text-sm rounded-md",
 }
@@ -21,13 +22,17 @@ const variantStyles = {
 }
 
 export function Button(props: ButtonInterface) {
-
-    return <button className={sizeStyles[props.size] + " " + variantStyles[props.variant]}>
+    const { title, size, startIcon, endIcon, variant, onClick } = props;
+    return (
+      <button
+        onClick={onClick}
+        className={sizeStyles[size] + " " + variantStyles[variant]}
+      >
         <div className="flex items-center justify-center">
-            {props.startIcon}
-            <div className="pl-1 pr-1">
-                {props.title}
-            </div>  
+          {startIcon}
+          <div className="pl-1 pr-1">{title}</div>
+          {endIcon}
         </div>
-    </button>
+      </button>
+    );
 }

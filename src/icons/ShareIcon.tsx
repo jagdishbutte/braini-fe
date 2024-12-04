@@ -4,7 +4,7 @@ interface ShareIconProps {
 
 const sizeVariants = {
   sm: "size-4",
-  md: "size-5",
+  md: "size-[18px]",
   lg: "size-5",
 };
 
