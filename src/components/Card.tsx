@@ -1,6 +1,8 @@
+import DeleteIcon from "../icons/DeleteIcon";
 import { ShareIcon } from "../icons/ShareIcon";
+import { TwitterIcon } from "../icons/TwitterIcon";
 
-interface CardProps{
+export interface CardProps{
   title: string;
   link: string;
   type: "twitter"| "youtube"
@@ -9,12 +11,12 @@ interface CardProps{
 function Card({title, link, type}: CardProps) {
   return (
     <>
-      <div className="card">
+      <div className="card m-4">
         <div className="p-8 bg-white rounded-md max-w-96 border">
           <div className="flex justify-between font-medium">
             <div className="flex items-center">
               <div className="pr-2 text-gray-500">
-                <ShareIcon size={"md"} />
+                <TwitterIcon size={"md"} />
               </div>
               {title}
             </div>
@@ -25,7 +27,7 @@ function Card({title, link, type}: CardProps) {
                 </a>
               </div>
               <div className="text-gray-500">
-                <ShareIcon size={"md"} />
+                <DeleteIcon size={"md"} />
               </div>
             </div>
           </div>

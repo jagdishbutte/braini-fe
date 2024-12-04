@@ -1,8 +1,8 @@
 function Input({
-  onChange,
   placeholder,
+  reference
 }: {
-  onChange?: () => void;
+  reference?: any;
   placeholder: string;
 }) {
   return (
@@ -11,7 +11,7 @@ function Input({
         placeholder={placeholder}
         type={"text"}
         className="px-4 py-2 border rounded-md outline-zinc-200"
-        onChange={onChange}
+        ref={reference}
       ></input>
     </div>
   );

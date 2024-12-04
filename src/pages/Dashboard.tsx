@@ -1,13 +1,16 @@
 import { useState } from "react";
-import Card from "../components/Card";
+import Card, { CardProps } from "../components/Card";
 import CreateContent from "../components/CreateContent";
 import { Button } from "../components/ui/Button";
 import { PlusIcon } from "../icons/PlusIcon";
 import { ShareIcon } from "../icons/ShareIcon";
 import Sidebar from "../components/Sidebar";
+import useContent from "../hooks/useContent";
+import { LogoIcon } from "../icons/LogoIcon";
 
 function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
+  const contents = useContent();
 
   return (
     <>
@@ -20,35 +23,33 @@ function Dashboard() {
           }}
         />
 
-        <div className="flex justify-end gap-4">
-          <Button
-            onClick={() => {
-              setModalOpen(true);
-            }}
-            variant={"primary"}
-            startIcon={<PlusIcon size={"lg"} />}
-            size="lg"
-            title={"Add Content"}
-          ></Button>
-          <Button
-            variant={"secondary"}
-            startIcon={<ShareIcon size={"md"} />}
-            size="lg"
-            title={"Share Brain"}
-          ></Button>
+        <div className="fixed top-0 left-0 w-screen h-16 bg-white shadow-md flex items-center justify-between px-6 z-50">
+          <div>
+            <LogoIcon/>
+          </div>
+          <div className="flex gap-4">
+            <Button
+              onClick={() => setModalOpen(true)}
+              variant={"primary"}
+              startIcon={<PlusIcon size={"md"} />}
+              size="lg"
+              title={"Add Content"}
+            />
+            <Button
+              variant={"secondary"}
+              startIcon={<ShareIcon size={"md"} />}
+              size="lg"
+              title={"Share Brain"}
+            />
+          </div>
         </div>
 
-        <div className="flex gap-2">
-          <Card
-            title="Linux Watch"
-            link="https://x.com/QVHenkel/status/1863450367368757413"
-            type="twitter"
-          />
-          <Card
-            title="Project Ideas"
-            link="https://www.youtube.com/embed/eZT8RUuWvR8?si=C0bI_hIUpORGNrNf"
-            type="youtube"
-          />
+        <div className="mt-16">
+          <div className="flex gap-2">
+            {contents.map(({ type, link, title }: CardProps) => (
+              <Card title={title} link={link} type={type} />
+            ))}
+          </div>
         </div>
       </div>
     </>
